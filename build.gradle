@@ -2,7 +2,7 @@ plugins {
     id 'groovy'
     id 'application'
     id 'org.openjfx.javafxplugin'           version '0.0.9'
-    id 'org.beryx.jlink'                    version '2.22.1'
+    id 'org.beryx.jlink'                    version '2.23.3'
 }
 
 def appName = 'SupernautFX Hello'
@@ -13,15 +13,15 @@ application {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
     maven { url 'https://dl.bintray.com/supernautapp/maven' }
 }
 
 dependencies {
-    implementation "app.supernaut:supernaut-fx:0.1.0"
+    implementation "app.supernaut:supernaut-fx:${supernautVersion}"
     implementation "io.micronaut:micronaut-inject:${micronautVersion}"  // For Micronaut annotations eg. @Factory and generated code
 
-    runtime "app.supernaut:supernaut-fx-micronaut:0.1.0"            // To provide the ServiceLoader implementation of FxLauncher
+    runtime "app.supernaut:supernaut-fx-micronaut:${supernautVersion}"  // To provide the ServiceLoader implementation of FxLauncher
 
     annotationProcessor "io.micronaut:micronaut-inject-java:${micronautVersion}"
 

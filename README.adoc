@@ -1,0 +1,9 @@
+= Supernaut.FX Sample Gradle Build
+
+== Build Instructions
+
+. `./gradlew build`
+
+or 
+
+. `./gradlew jpackage`
