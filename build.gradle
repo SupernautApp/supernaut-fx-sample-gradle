@@ -84,8 +84,6 @@ jlink {
         forceMerge 'org.slf4j'
     }
     jpackage {
-        // See https://badass-jlink-plugin.beryx.org/releases/latest/#_jpackage for
-        // where the plugin's jpackage task finds the path to the jpackage tool by default
         skipInstaller = false
 
         // Which installers to make
@@ -97,9 +95,7 @@ jlink {
             installerType = 'exe'           // default is ['exe', 'msi']
         }
 
-        // Massage version string to be compatible with jpackage installers
-        // for the current OS platform
-        def appVersionForJpackage = version
+        def appVersionForJpackage = version  // Be careful here, some version strings won't work with all installers
 
         imageOptions = ["--verbose", "--app-version", appVersionForJpackage]
         installerOptions = ["--app-version", appVersionForJpackage]
