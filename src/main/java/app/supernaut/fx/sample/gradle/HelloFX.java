@@ -1,6 +1,5 @@
 package app.supernaut.fx.sample.gradle;
 
-import app.supernaut.BackgroundApp;
 import app.supernaut.fx.FxForegroundApp;
 import app.supernaut.fx.FxLauncher;
 import app.supernaut.services.BrowserService;
@@ -39,18 +38,8 @@ public class HelloFX implements FxForegroundApp.FxApplicationCompat  {
         hyperlink.setOnAction(e -> browserService.showDocument(githubRepoUri));
         return new Scene(vbox, 350, 100);
     }
-    
-    /**
-     * Background application that runs without UI (JavaFX)
-     */
-    @Singleton
-    static class MinimalBackgroundApp implements BackgroundApp {
-        @Override
-        public void start() {
-        }
-    }
-    
+
     public static void main(String[] args) {
-        FxLauncher.byName("micronaut").launch(args, HelloFX.class, MinimalBackgroundApp.class);
+        FxLauncher.byName("micronaut").launch(args, HelloFX.class);
     }
 }
