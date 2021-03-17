@@ -6,7 +6,7 @@ module hellofx {
     requires javafx.controls;
 
     requires app.supernaut.fx;
-    requires javax.inject;
+    requires jakarta.inject;
 
     /* Not needed see module JavaDoc comment above */
     //requires app.supernaut.fx.micronaut;  // Needed (for now) on Maven toolchain but shouldn't be
