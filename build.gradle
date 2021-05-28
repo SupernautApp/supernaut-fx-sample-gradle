@@ -14,7 +14,7 @@ application {
 
 repositories {
     mavenCentral()
-    maven { url 'https://dl.bintray.com/supernautapp/maven' }
+    maven { url 'https://gitlab.com/api/v4/projects/26584840/packages/maven' /* gitlab-supernaut-maven */ }
 }
 
 dependencies {
@@ -22,7 +22,7 @@ dependencies {
     implementation 'jakarta.inject:jakarta.inject-api:2.0.0'
     implementation "io.micronaut:micronaut-inject:${micronautVersion}"  // For Micronaut annotations eg. @Factory and generated code
 
-    runtime "app.supernaut:supernaut-fx-micronaut:${supernautVersion}"  // To provide the ServiceLoader implementation of FxLauncher
+    runtimeOnly "app.supernaut:supernaut-fx-micronaut:${supernautVersion}"  // To provide the ServiceLoader implementation of FxLauncher
 
     annotationProcessor "io.micronaut:micronaut-inject-java:${micronautVersion}"
 
