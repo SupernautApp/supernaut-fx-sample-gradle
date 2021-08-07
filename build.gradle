@@ -2,7 +2,7 @@ plugins {
     id 'groovy'
     id 'application'
     id 'org.openjfx.javafxplugin'           version '0.0.9'
-    id 'org.beryx.jlink'                    version '2.23.3'
+    id 'org.beryx.jlink'                    version '2.24.1'
 }
 
 def appName = 'SupernautFX Hello'
@@ -19,8 +19,11 @@ repositories {
 
 dependencies {
     implementation "app.supernaut:supernaut-fx:${supernautVersion}"
-    implementation 'jakarta.inject:jakarta.inject-api:2.0.0'
-    implementation "io.micronaut:micronaut-inject:${micronautVersion}"  // For Micronaut annotations eg. @Factory and generated code
+
+    compileOnly 'jakarta.inject:jakarta.inject-api:2.0.0'
+    compileOnly ("io.micronaut:micronaut-inject:${micronautVersion}") {  // For Micronaut annotations eg. @Factory and generated code {
+        exclude group: "com.google.code.findbugs", module: "jsr305" // Exclude until Micronaut removes transitive dependency
+    }
 
     runtimeOnly "app.supernaut:supernaut-fx-micronaut:${supernautVersion}"  // To provide the ServiceLoader implementation of FxLauncher
 
@@ -41,10 +44,6 @@ javafx {
     version = javaFxVersion
     modules = ['javafx.graphics', 'javafx.controls', 'javafx.fxml']
 }
-
-patchModules.config = [
-        "java.annotation=jsr305-3.0.2.jar"
-]
 
 modularity.disableEffectiveArgumentsAdjustment()
 
