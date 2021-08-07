@@ -1,5 +1,5 @@
 /**
- *
+ * Java Module definitions for HelloFX, the minimal SupernautFX Gradle Sample
  */
 module hellofx {
     requires javafx.graphics;
