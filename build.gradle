@@ -62,6 +62,7 @@ test {
         runOnClasspath = true
     }
 }
+
 run {
     moduleOptions {
         addModules = ['app.supernaut.fx.micronaut']
@@ -69,7 +70,6 @@ run {
 }
 
 def os = org.gradle.internal.os.OperatingSystem.current()
-def signJPackageImages = false
 
 jlink {
     addExtraDependencies("javafx")
@@ -99,7 +99,7 @@ jlink {
         installerOptions = ["--app-version", appVersionForJpackage]
         if (os.macOsX) {
             // No resource-dir for now // imageOptions += [ '--resource-dir', "${projectDir}/src/macos/resource-dir" ]
-            if (signJPackageImages) {
+            if (signMacOS) {
                 logger.warn "Setting --mac-sign in jpackage imageOptions"
                 imageOptions += [ '--mac-sign' ]
             }
