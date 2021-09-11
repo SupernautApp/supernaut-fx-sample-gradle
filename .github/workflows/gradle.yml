@@ -8,9 +8,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        java: [ '16.0.2' ]
+        java: ['17-ea']
+        distribution: ['zulu']
       fail-fast: false
-    name: ${{ matrix.os }} JDK ${{ matrix.java }}
+    name: ${{ matrix.os }} JDK ${{ matrix.distribution }} ${{ matrix.java }}
     steps:
     - name: Git checkout
       uses: actions/checkout@v1
@@ -18,7 +19,7 @@ jobs:
       id: setupjdk
       uses: actions/setup-java@v2.2.0
       with:
-        distribution: 'temurin'
+        distribution: ${{ matrix.distribution }}
         java-version: ${{ matrix.java }}
     - name: Verify Gradle Wrapper
       uses: gradle/wrapper-validation-action@v1
@@ -29,7 +30,7 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
         restore-keys: ${{ runner.os }}-gradle
     - name: Build with Gradle
-      run: ./gradlew jpackage --scan --info --stacktrace
+      run: ./gradlew build jpackage --scan --info --stacktrace
     - name: Upload DMG as an artifact
       uses: actions/upload-artifact@v2
       with:
