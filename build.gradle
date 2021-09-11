@@ -99,7 +99,7 @@ jlink {
         installerOptions = ["--app-version", appVersionForJpackage]
         if (os.macOsX) {
             // No resource-dir for now // imageOptions += [ '--resource-dir', "${projectDir}/src/macos/resource-dir" ]
-            if (signMacOS) {
+            if (signMacOS.toBoolean()) {
                 logger.warn "Setting --mac-sign in jpackage imageOptions"
                 imageOptions += [ '--mac-sign' ]
             }
