@@ -11,19 +11,25 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import jakarta.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.URI;
 
 @Singleton
 public class HelloFX implements FxForegroundApp.FxApplicationCompat  {
+    private static final Logger log = LoggerFactory.getLogger(HelloFX.class);
     private static final URI githubRepoUri = URI.create("https://github.com/SupernautApp/SupernautFX");
     private final BrowserService browserService;
 
     public HelloFX(BrowserService browserService) {
+        log.info("Constructing HelloFX");
         this.browserService = browserService;
     }
 
     @Override
     public void start(Stage stage) {
+        log.info("Starting HelloFX");
         stage.setScene(buildScene());
         stage.show();
     }

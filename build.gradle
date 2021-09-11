@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     implementation "app.supernaut:supernaut-fx:${supernautVersion}"
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
 
     compileOnly 'jakarta.inject:jakarta.inject-api:2.0.0'                   // For @Singleton annotation, etc.
     compileOnly ("io.micronaut:micronaut-inject:${micronautVersion}") {     // For Micronaut annotations eg. @Factory and generated code {
@@ -72,19 +73,13 @@ def signJPackageImages = false
 
 jlink {
     addExtraDependencies("javafx")
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--add-modules', 'app.supernaut.fx.micronaut']
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--add-modules', 'app.supernaut.fx.micronaut,org.slf4j.jul']
     launcher {
         name = appName
         jvmArgs = []
     }
     mergedModule {
-        requires 'java.logging'
-
-        requires 'javafx.graphics'
-        requires 'javafx.controls'
-        requires 'javafx.fxml'
-
-        forceMerge 'org.slf4j'
+        requires 'org.slf4j'
     }
     jpackage {
         skipInstaller = false

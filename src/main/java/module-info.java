@@ -15,8 +15,7 @@ module hellofx {
     requires io.micronaut.inject;
     //requires io.micronaut.core;  // This is needed by our Maven toolchain, but not by Gradle
 
-//    requires org.slf4j;
-//    requires java.logging;
+    requires org.slf4j;
 
     opens app.supernaut.fx.sample.gradle to javafx.graphics, java.base;
     exports app.supernaut.fx.sample.gradle;
