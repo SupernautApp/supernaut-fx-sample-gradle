@@ -7,6 +7,9 @@ image:https://github.com/SupernautApp/supernautfx-sample-gradle/workflows/Gradle
 
 This project contains a sample, "Hello World"-style JavaFX application using https://github.com/SupernautApp/SupernautFX[Supernaut.FX] built with https://gradle.org[Gradle] and using the https://badass-jlink-plugin.beryx.org/releases/latest/[Badass JLink Plugin] to produce natively-packaged applications for Linux, macOS, and Windows.
 
+== Setup
+
+. Install JDK 17 or later.
 
 == Build Instructions
 
