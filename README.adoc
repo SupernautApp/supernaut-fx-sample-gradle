@@ -5,7 +5,7 @@ image:https://github.com/SupernautApp/supernautfx-sample-gradle/workflows/Gradle
 
 == Overview
 
-This project contains a sample, "Hello World"-style JavaFX application using https://github.com/SupernautApp/SupernautFX[Supernaut.FX] built with https://gradle.org[Gradle] and using the https://badass-jlink-plugin.beryx.org/releases/latest/[Badass JLink Plugin] to produce natively-packaged applications for Linux, macOS, and Windows.
+This project contains a sample, "Hello World"-style https://github.com/SupernautApp/SupernautFX[Supernaut.FX] application using built with https://gradle.org[Gradle], the https://badass-jlink-plugin.beryx.org/releases/latest/[Badass JLink Plugin], https://docs.oracle.com/javase/9/tools/jlink.htm[jlink] and https://docs.oracle.com/en/java/javase/17/docs/specs/man/jpackage.html[jpackage] to produce natively-packaged applications for Linux, macOS, and Windows.
 
 == Setup
 
@@ -13,18 +13,22 @@ This project contains a sample, "Hello World"-style JavaFX application using htt
 
 == Build Instructions
 
+. `git clone git@github.com:SupernautApp/supernaut-fx-sample-gradle.git`
+. `cd supernaut-fx-sample-gradle`
+. `./gradlew build`
+
 To run via Gradle:
 
-. `./gradlew run`
-
-To compile and test:
-
-. `./gradlew build`
+* `./gradlew run`
 
 To build a natively-packaged executable:
 
-. `./gradlew jpackageImage`
+* `./gradlew jpackageImage`
+
+The executable can be found in the `build/jpackage` directory.
 
 To build a native package for distribution:
 
-. `./gradlew jpackage`
+* `./gradlew jpackage`
+
+The installer package can be found in the `build/jpackage` directory.
