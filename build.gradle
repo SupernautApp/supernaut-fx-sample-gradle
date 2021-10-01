@@ -39,8 +39,8 @@ dependencies {
         exclude module: "groovy-all"
     }
 
-    testRuntimeOnly "net.bytebuddy:byte-buddy:1.10.9"                       // allows Spock to mock classes (in addition to interfaces)
-    testRuntimeOnly "org.objenesis:objenesis:3.1"                           // Allow Spock to mock classes with constructor arguments
+    testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.15"                       // allows Spock to mock classes (in addition to interfaces)
+    testRuntimeOnly "org.objenesis:objenesis:3.2"                           // Allow Spock to mock classes with constructor arguments
     testRuntimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"                 // Runtime implementation of slf4j
 }
 
