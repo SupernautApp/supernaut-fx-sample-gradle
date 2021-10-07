@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 
 @Singleton
-public class HelloFX implements FxForegroundApp.FxApplicationCompat {
+public class HelloFX implements FxForegroundApp {
     private static final Logger log = LoggerFactory.getLogger(HelloFX.class);
     private static final URI projectWebSiteUri = URI.create("https://www.supernaut.app");
     private final BrowserService browserService;
