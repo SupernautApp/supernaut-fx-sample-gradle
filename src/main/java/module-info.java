@@ -6,14 +6,10 @@ module hellofx {
     requires javafx.controls;
 
     requires app.supernaut.fx;
-    requires jakarta.inject;
 
-    /* Not needed see module JavaDoc comment above */
-    //requires app.supernaut.fx.micronaut;  // Needed (for now) on Maven toolchain but shouldn't be
+    requires static jakarta.inject;
 
-    /* Needed for Micronaut-generated classes, see JavaDoc comment above */
-    requires io.micronaut.inject;
-    //requires io.micronaut.core;  // This is needed by our Maven toolchain, but not by Gradle
+    requires io.micronaut.inject;  // Needed for Micronaut-generated classes
 
     requires org.slf4j;
 
