@@ -1,6 +1,6 @@
 package app.supernaut.fx.sample.gradle;
 
-import app.supernaut.fx.FxForegroundApp;
+import app.supernaut.fx.ApplicationDelegate;
 import app.supernaut.fx.FxLauncher;
 import app.supernaut.services.BrowserService;
 import javafx.geometry.Pos;
@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 
 @Singleton
-public class HelloFX implements FxForegroundApp {
+public class HelloFX implements ApplicationDelegate {
     private static final Logger log = LoggerFactory.getLogger(HelloFX.class);
     private static final URI projectWebSiteUri = URI.create("https://www.supernaut.app");
     private final BrowserService browserService;
