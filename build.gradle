@@ -20,27 +20,24 @@ repositories {
 }
 
 dependencies {
-    implementation "app.supernaut:app.supernaut.fx:${supernautVersion}"
+    implementation "app.supernaut:app.supernaut.fx:${supernautVersion}" // Supernaut.FX and FxLauncher API
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"
 
-    compileOnly 'jakarta.inject:jakarta.inject-api:2.0.1.RC1'                   // For @Singleton annotation, etc.
-    compileOnly ("io.micronaut:micronaut-inject:${micronautVersion}") {     // For Micronaut annotations eg. @Factory and generated code {
-        exclude group: "com.google.code.findbugs", module: "jsr305"         // Exclude until Micronaut removes this transitive dependency
-    }
+    compileOnly 'jakarta.inject:jakarta.inject-api:2.0.1.RC1'           // For @Singleton annotation, etc.
+    compileOnly "io.micronaut:micronaut-inject:${micronautVersion}"     // For Micronaut annotations eg. @Factory and generated code
 
     annotationProcessor "io.micronaut:micronaut-inject-java:${micronautVersion}"
 
-    runtimeOnly "app.supernaut:app.supernaut.fx.micronaut:${supernautVersion}"  // To provide the ServiceLoader implementation of FxLauncher
-    runtimeOnly "io.micronaut:micronaut-inject:${micronautVersion}"
-    runtimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"
-
+    runtimeOnly "app.supernaut:app.supernaut.fx.micronaut:${supernautVersion}"  // Provide the ServiceLoader implementation of FxLauncher
+    runtimeOnly "io.micronaut:micronaut-inject:${micronautVersion}"     // Override the transitive Micronaut version from app.supernaut.fx.micronaut
+    runtimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"                 // Provide an implementation for slf4j-api
 
     testImplementation "org.codehaus.groovy:groovy:${groovyVersion}:"
     testImplementation("org.spockframework:spock-core:${spockVersion}") {
         exclude module: "groovy-all"
     }
 
-    testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.15"                       // allows Spock to mock classes (in addition to interfaces)
+    testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.15"                      // allows Spock to mock classes (in addition to interfaces)
     testRuntimeOnly "org.objenesis:objenesis:3.2"                           // Allow Spock to mock classes with constructor arguments
     testRuntimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"                 // Runtime implementation of slf4j
 }
