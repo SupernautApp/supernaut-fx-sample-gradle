@@ -31,6 +31,7 @@ dependencies {
     annotationProcessor "io.micronaut:micronaut-inject-java:${micronautVersion}"
 
     runtimeOnly "app.supernaut:app.supernaut.fx.micronaut:${supernautVersion}"  // To provide the ServiceLoader implementation of FxLauncher
+    runtimeOnly "io.micronaut:micronaut-inject:${micronautVersion}"
     runtimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"
 
 
@@ -80,6 +81,7 @@ jlink {
     }
     mergedModule {
         requires 'org.slf4j'
+        requires 'jakarta.annotation'
     }
     jpackage {
         skipInstaller = false
