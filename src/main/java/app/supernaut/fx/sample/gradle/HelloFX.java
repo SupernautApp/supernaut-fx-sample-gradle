@@ -4,7 +4,6 @@ import app.supernaut.fx.ApplicationDelegate;
 import app.supernaut.fx.FxLauncher;
 import app.supernaut.services.BrowserService;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -39,13 +38,9 @@ public class HelloFX implements ApplicationDelegate {
     private Scene buildScene() {
         var label       = new Label(buildHello());
         var hyperlink   = new Hyperlink("Powered by Supernaut.FX");
-        // Hyperlinks don't work on macOS in Graal native-image yet, see https://github.com/SupernautApp/SupernautFX/issues/25
-        // TODO: Add a test that will set the below boolean to true if JavaFX > forthcoming 18-ea+4
-        boolean addHyperlink = false;
-        var vboxNodes = addHyperlink ? new Node[]{label, hyperlink} : new Node[]{label};
-        var vbox        = new VBox(vboxNodes);
-        vbox.setAlignment(Pos.CENTER);
         hyperlink.setOnAction(e -> browserService.showDocument(projectWebSiteUri));
+        var vbox        = new VBox(label, hyperlink);
+        vbox.setAlignment(Pos.CENTER);
         return new Scene(vbox, 500, 100);
     }
 
@@ -53,6 +48,9 @@ public class HelloFX implements ApplicationDelegate {
         var javaVersion = System.getProperty("java.version");
         var javafxVersion = System.getProperty("javafx.version");
         var javaFxRuntimeVersion = System.getProperty("javafx.runtime.version");
+        log.info("java.version: {}", javaVersion);
+        log.info("javafx.version: {}", javafxVersion);
+        log.info("javafx.runtime.version: {}", javaFxRuntimeVersion);
         return String.format("Hello, JavaFX  %s running on Java %s",
                 javaFxRuntimeVersion, javaVersion);
     }
