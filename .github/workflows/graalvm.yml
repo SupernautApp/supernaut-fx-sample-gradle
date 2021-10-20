@@ -1,0 +1,77 @@
+name: Maven GraalVM + Gluon Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        # These parameters aren't currently used with gluonhq/setup-graalvm
+        java: ['java11']
+        graalvm: [ '21.3.0' ]
+        gu-binary: [gu]
+        include:
+          - os: windows-latest
+            java: 'java11'
+            graalvm: '21.2.0'
+            gu-binary: gu.cmd
+      fail-fast: false
+    name: ${{ matrix.os }} GraalVM + Gluon
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Gluon's GraalVM
+        uses: gluonhq/setup-graalvm@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: If Linux, apt-get update
+        if: runner.os == 'Linux'
+        run: sudo apt-get update
+
+      - name: If Linux, install Linux dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+
+      - name: If Windows, add msbuild to PATH
+        if: runner.os == 'Windows'
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: If Windows, Visual Studio shell
+        if: runner.os == 'Windows'
+        uses: egor-tensin/vs-shell@v1
+
+      - name: Make staging directory
+        run: mkdir staging
+
+      - name: Verify Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Build with Gradle
+        run: ./gradlew nativeBuild --scan --info --stacktrace
+
+      - name: If macOS, copy Mac native image to staging
+        if: runner.os == 'macOS'
+        run: cp -r build/gluonfx/x86_64-darwin/SupernautFXHello* staging
+
+      - name: If Windows, copy Windows native image to staging
+        if: runner.os == 'Windows'
+        run: cp -r build/gluonfx/x86_64-windows/SupernautFXHello.exe staging
+
+      - name: If Linux, copy Linux native image to staging
+        if: runner.os == 'Linux'
+        run: cp -r build/gluonfx/x86_64-linux/SupernautFXHello** staging
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: SupernautFX Hello ${{ runner.os }} Package
+          path: staging
