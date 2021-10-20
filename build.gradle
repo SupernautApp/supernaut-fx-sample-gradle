@@ -45,6 +45,11 @@ dependencies {
     testRuntimeOnly "org.objenesis:objenesis:3.2"                                   // Allow Spock to mock classes with constructor arguments
 }
 
+configurations.all {
+    exclude group: 'javax.annotation', module: "javax.annotation-api"
+    exclude group: 'org.yaml', module: "snakeyaml"
+}
+
 javafx {
     version = javaFxVersion
     modules = ['javafx.graphics', 'javafx.controls', 'javafx.fxml']
