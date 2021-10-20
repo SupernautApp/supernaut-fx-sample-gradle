@@ -7,9 +7,8 @@ module hellofx {
 
     requires app.supernaut.fx;
 
-    requires static jakarta.inject;
-
-    requires static io.micronaut.inject;  // Needed for Micronaut-generated classes
+    requires jakarta.inject;
+    requires io.micronaut.inject;  // Needed for Micronaut-generated classes
     requires jakarta.annotation;
 
     requires org.slf4j;
