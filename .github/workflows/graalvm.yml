@@ -60,15 +60,15 @@ jobs:
 
       - name: If macOS, copy Mac native image to staging
         if: runner.os == 'macOS'
-        run: cp -r build/gluonfx/x86_64-darwin/SupernautFXHello* staging
+        run: cp -r build/gluonfx/x86_64-darwin/supernaut-fx-sample-gradle staging
 
       - name: If Windows, copy Windows native image to staging
         if: runner.os == 'Windows'
-        run: cp -r build/gluonfx/x86_64-windows/SupernautFXHello.exe staging
+        run: cp -r build/gluonfx/x86_64-windows/supernaut-fx-sample-gradle.exe staging
 
       - name: If Linux, copy Linux native image to staging
         if: runner.os == 'Linux'
-        run: cp -r build/gluonfx/x86_64-linux/SupernautFXHello** staging
+        run: cp -r build/gluonfx/x86_64-linux/supernaut-fx-sample-gradle staging
 
       - name: Upload
         uses: actions/upload-artifact@v2
