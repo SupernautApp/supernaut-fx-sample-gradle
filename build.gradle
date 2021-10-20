@@ -4,14 +4,16 @@ plugins {
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
     id 'org.openjfx.javafxplugin'           version '0.0.10'
     id 'org.beryx.jlink'                    version '2.24.2'
+    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.7'
 }
 
 def appName = 'SupernautFX Hello'
 version = helloAppVersion
+mainClassName = 'app.supernaut.fx.sample.gradle.HelloFX'
 
 application {
     mainModule = 'hellofx'
-    mainClass = 'app.supernaut.fx.sample.gradle.HelloFX'
+    mainClass = mainClassName
 }
 
 repositories {
