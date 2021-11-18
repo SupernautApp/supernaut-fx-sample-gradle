@@ -15,7 +15,7 @@ jobs:
         include:
           - os: windows-latest
             java: 'java11'
-            graalvm: '21.2.0'
+            graalvm: '21.3.0'
             gu-binary: gu.cmd
       fail-fast: false
     name: ${{ matrix.os }} GraalVM + Gluon
