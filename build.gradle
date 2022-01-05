@@ -4,7 +4,7 @@ plugins {
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
     id 'org.openjfx.javafxplugin'           version '0.0.10'
     id 'org.beryx.jlink'                    version '2.24.2'
-    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.8'
+    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.10'
 }
 
 def appName = 'SupernautFX Hello'
