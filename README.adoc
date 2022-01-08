@@ -48,7 +48,14 @@ To build:
 
 * `./gradlew nativeBuild`
 
-or, to run:
+to run:
 
 * `./gradlew nativeBuild nativeRun`
+
+or to build a package:
+
+* `./gradlew nativeBuild nativePackage`
+
+The native packages can then be found in: `./build/gluonfx/<platform>/`
+
 
