@@ -2,9 +2,9 @@ plugins {
     id 'groovy'
     id 'application'
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
-    id 'org.openjfx.javafxplugin'           version '0.0.10'
+    id 'org.openjfx.javafxplugin'           version '0.0.12'
     id 'org.beryx.jlink'                    version '2.24.4'
-    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.10'
+    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.12'
 }
 
 def appName = 'SupernautFX Hello'
