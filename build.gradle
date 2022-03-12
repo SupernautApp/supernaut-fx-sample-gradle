@@ -1,6 +1,7 @@
 plugins {
     id 'groovy'
     id 'application'
+    id 'io.micronaut.minimal.application'   version '3.3.0'
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
     id 'org.openjfx.javafxplugin'           version '0.0.12'
     id 'org.beryx.jlink'                    version '2.24.4'
@@ -26,9 +27,6 @@ dependencies {
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"                            // Logging API
 
     implementation "jakarta.inject:jakarta.inject-api"                              // For @Singleton annotation, etc.
-    implementation "io.micronaut:micronaut-inject"                                  // For Micronaut annotations (eg. @Factory) and generated code
-
-    annotationProcessor "io.micronaut:micronaut-inject-java:${micronautVersion}"    // Micronaut annotation processor generates code
 
     runtimeOnly "app.supernaut:app.supernaut.fx.micronaut:${supernautVersion}"      // Micronaut-based implementation of FxLauncher
     runtimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"                             // Implementation of slf4j-api
@@ -47,6 +45,11 @@ dependencies {
 configurations.all {
     exclude group: 'javax.annotation', module: "javax.annotation-api"
     exclude group: 'org.yaml', module: "snakeyaml"
+}
+
+micronaut {
+    version = "${micronautVersion}"
+    runtime "none"
 }
 
 javafx {
