@@ -3,7 +3,7 @@ plugins {
     id 'application'
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
     id 'org.openjfx.javafxplugin'           version '0.0.10'
-    id 'org.beryx.jlink'                    version '2.24.2'
+    id 'org.beryx.jlink'                    version '2.24.4'
     id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.10'
 }
 
@@ -87,6 +87,8 @@ jlink {
         requires 'org.slf4j'
         requires 'jakarta.inject'
         requires 'jakarta.annotation'
+
+        uses 'io.micronaut.core.optim.StaticOptimizations.Loader'
     }
     jpackage {
         skipInstaller = false
