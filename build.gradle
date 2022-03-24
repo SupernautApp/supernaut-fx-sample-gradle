@@ -1,7 +1,7 @@
 plugins {
     id 'groovy'
     id 'application'
-    id 'io.micronaut.minimal.application'   version '3.3.0'
+    id 'io.micronaut.minimal.application'   version '3.3.1'
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
     id 'org.openjfx.javafxplugin'           version '0.0.12'
     id 'org.beryx.jlink'                    version '2.24.4'
