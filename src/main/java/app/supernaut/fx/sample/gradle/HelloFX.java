@@ -58,7 +58,7 @@ public class HelloFX implements ApplicationDelegate {
 
     public static void main(String[] args) {
         JavaLoggingSupport.configure(HelloFX.class, "app.supernaut.fx.sample");
-        log.warn("Configuring logging");
+        log.warn("Logging configured");
         FxLauncher.byName("micronaut").launch(args, HelloFX.class);
     }
 }
