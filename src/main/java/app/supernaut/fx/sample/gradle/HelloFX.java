@@ -2,6 +2,7 @@ package app.supernaut.fx.sample.gradle;
 
 import app.supernaut.fx.ApplicationDelegate;
 import app.supernaut.fx.FxLauncher;
+import app.supernaut.logging.JavaLoggingSupport;
 import app.supernaut.services.BrowserService;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -56,6 +57,8 @@ public class HelloFX implements ApplicationDelegate {
     }
 
     public static void main(String[] args) {
+        JavaLoggingSupport.configure(HelloFX.class, "app.supernaut.fx.sample");
+        log.warn("Configuring logging");
         FxLauncher.byName("micronaut").launch(args, HelloFX.class);
     }
 }
