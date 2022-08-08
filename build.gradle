@@ -1,11 +1,11 @@
 plugins {
     id 'groovy'
     id 'application'
-    id 'io.micronaut.minimal.application'   version '3.3.1'
+    id 'io.micronaut.minimal.application'   version '3.4.0'
     id 'org.javamodularity.moduleplugin'    version '1.8.10'
-    id 'org.openjfx.javafxplugin'           version '0.0.12'
+    id 'org.openjfx.javafxplugin'           version '0.0.13'
     id 'org.beryx.jlink'                    version '2.25.0'
-    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.13'
+    id 'com.gluonhq.gluonfx-gradle-plugin'  version '1.0.15'
 }
 
 def appName = 'SupernautFX Hello'
